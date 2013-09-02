@@ -81,6 +81,28 @@ public class LinkOperation {
 		}
 	}
 	/**
+	 * 2-3-就地逆置链表（不带头结点）
+	 * @param head
+	 */
+	public static LinkNode inverseLink3(LinkNode head) {
+		if(head != null && head.getNext() != null) {
+			LinkNode preNext = null;
+			LinkNode current = head;
+			LinkNode next;
+			while(current != null) {
+				next = current.getNext();
+				current.setNext(preNext);
+				preNext = current;
+				current = next;
+			}
+			head = preNext;
+			return head;
+		} else {
+			System.out.println("Link is null! 或者链表长度大于2才需要逆置。");
+			return head;
+		}
+	}
+	/**
 	 * 3-print
 	 * @param head
 	 */
@@ -380,8 +402,8 @@ public class LinkOperation {
 	
 	public static void main(String[] args) {
 //		int[] arr = {3,4,8,12,16,19};
-		int[] arr = {3,3,3,3,3,3};
-		System.out.println(getHuffmanLayer(arr));
+//		int[] arr = {3,3,3,3,3,3};
+//		System.out.println(getHuffmanLayer(arr));
 		
 
 		
@@ -409,7 +431,7 @@ public class LinkOperation {
 //		int[] a = {9, 8, 7, 6, 5, 4, 3, 1};
 //		int[] a = {3, 1};
 //		int[] a = {1};
-//		int[] a = {};
+		int[] a = {};
 //		LinkNode aHead = new LinkNode();
 //		for(int i=0; i<a.length; i++) {
 //			insertLinkNode(aHead, a[i]);
@@ -418,15 +440,15 @@ public class LinkOperation {
 //		inverseLink(aHead);
 //		printLink(aHead);
 		
-//		LinkNode aHead2 = null;
-//		for(int i=0; i<a.length; i++) {
-//			aHead2 = insertLinkNode2(aHead2, a[i]);
-//		}
-//		printLink2(aHead2);
+		LinkNode aHead2 = null;
+		for(int i=0; i<a.length; i++) {
+			aHead2 = insertLinkNode2(aHead2, a[i]);
+		}
+		printLink2(aHead2);
 //		printInverse2(aHead2);
 //		System.out.println("\nlength is " + getLengthOfLink2(aHead2));
-//		aHead2 = inverseLink2(aHead2);
-//		printLink2(aHead2);
+		aHead2 = inverseLink3(aHead2);
+		printLink2(aHead2);
 		
 //		LinkNode head = new LinkNode();
 //		LinkNode a1 = new LinkNode();
